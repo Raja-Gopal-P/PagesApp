@@ -1,0 +1,16 @@
+{% extends 'Pages/base.html' %}
+{% load pages_filters %}
+
+{% block title %} {{ current_page.title }} {% endblock %}
+
+{% block pages-list %}
+{% for page in pages %}
+<a href="{% url 'Pages:target_page' page.slug  %}" class="{{ page|a_class:current_page }}">{{ page.title }}</a>
+{% endfor %}
+{% endblock %}
+
+{% block page_content %}
+<div>
+{{ current_page.content_html|safe }}
+</div>
+{% endblock %}
